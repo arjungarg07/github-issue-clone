@@ -3,7 +3,7 @@
 		"mysqlDbConfig": {
 			"host": "localhost",
   			"user": "root",
-  			"password": "secret",
+  			"password": "",
   			"database": "my_db"
 		}
 	}
