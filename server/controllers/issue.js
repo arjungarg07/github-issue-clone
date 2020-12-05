@@ -62,7 +62,31 @@ async function update(req,res){
 };
 
 async function getAll(req,res){
-	
+	try{
+		const { page: unformatted_page } = req.query;
+		const page = Number(unformatted_page);
+		if(Number.isNaN(page) || page < 0)
+			return res.status(422).json({ 
+				success: false,
+				message: 'Page number is invalid' 
+			});
+		const begin = page === 1 ? 0 : page*10;
+
+		const GET_ALL_QUERY = `SELECT * FROM Issues LIMIT 10 OFFSET ${begin} WHERE isOpen = true AND active = 1`;
+		const data = await commonQuery(GET_ALL_QUERY);
+
+		res.json({
+			data: data,
+			message: 'Successfully fetched issues',
+			success: true
+		});
+	}catch(err){
+		console.log(err);
+		res.status(400).json({
+			message: 'Internal server error',
+			success: false
+		});
+	}
 };
 
 async function deleteOne(req,res){
