@@ -11,6 +11,6 @@ const {
 
 router.post('/add-issue',create);
 router.get('/list-issues', getAll);
-router.patch('update-issue/:id', update);
-router.delete('delete-issue/:id', deleteOne);
+router.patch('/update-issue/:id', update);
+router.delete('/delete-issue/:id', deleteOne);
 router.get('/list-issues', getOne); 
