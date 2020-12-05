@@ -72,7 +72,7 @@ async function getAll(req,res){
 			});
 		const begin = page === 1 ? 0 : page*10;
 
-		const GET_ALL_QUERY = `SELECT * FROM Issues LIMIT 10 OFFSET ${begin} WHERE isOpen = true AND active = 1`;
+		const GET_ALL_QUERY = `SELECT title,description,createdAt FROM Issues LIMIT 10 OFFSET ${begin} WHERE isOpen = true AND active = 1`;
 		const data = await commonQuery(GET_ALL_QUERY);
 
 		res.json({
@@ -124,7 +124,7 @@ async function getOne(req,res){
 				message: 'issue id is invalid' 
 			});
 
-		const FETCH_QUERY = `SELECT * FROM Issues WHERE id = ${id} AND active = 1;`
+		const FETCH_QUERY = `SELECT title,description,createdAt FROM Issues WHERE id = ${id} AND active = 1;`
 		const data = await commonQuery(FETCH_QUERY);
 
 		res.json({
