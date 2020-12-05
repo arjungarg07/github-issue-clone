@@ -1,4 +1,4 @@
-const {commonQuery} = require('./db');
+const {commonQuery} = require('../db');
 
 async function create(req,res){
 	try{
@@ -43,7 +43,7 @@ async function update(req,res){
 		const { affectedRows } = await commonQuery(`UPDATE Issues SET ? WHERE id = ${id} AND isOpen = true AND active = 1`, {
 			...description && { description },
 			...isOpen && { isOpen },
-			updatedAt = new Date()
+			updatedAt : new Date(),
 		});
 		if(affectedRows === 0)
 			return res.status(422).json({ success: false, message: 'Issue is closed or id is invalid' });
@@ -141,7 +141,7 @@ async function getOne(req,res){
 	}
 };
 
-const exports = {
+module.exports = {
 	create,
 	update,
 	getAll,
