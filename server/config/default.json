@@ -1,0 +1,10 @@
+{
+	"Config":{
+		"mysqlDbConfig": {
+			"host": "localhost",
+  			"user": "root",
+  			"password": "secret",
+  			"database": "my_db"
+		}
+	}
+}
