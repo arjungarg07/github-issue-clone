@@ -1,12 +1,12 @@
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import IssuesList from './components/issuesList';
+import IssueTable from './components/IssueTable';
 
 
 function App() {
   return (
     <div className="App">
-		<IssuesList list={list} />
+		<IssueTable />
     </div>
   );
 }

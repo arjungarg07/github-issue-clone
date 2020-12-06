@@ -1,7 +1,7 @@
 
 const mysql = require('mysql');
-const config = require('config');
-const pool = mysql.createPool(config.get('Config.mysqlDbConfig'));
+const { mysqlDbConfig } = require('./config/default');
+const pool = mysql.createPool(mysqlDbConfig);
 function commonQuery(query,params) {
   return new Promise(function (resolve, reject) {
     pool.getConnection(function (err, connection) {
