@@ -43,7 +43,7 @@ async function update(req, res) {
 		const { affectedRows } = await commonQuery(
 			`UPDATE database1.Issues SET ? WHERE id = ${id} AND isOpen = 1 AND active = 1;`,
 			{
-				...(description && { description }),
+				...(description && { description }),// updating entries which are being edited accordingly
 				...((isOpen===0 || isOpen === 1) && { isOpen }),
 				updatedAt: new Date(),
 			}
@@ -72,7 +72,7 @@ async function update(req, res) {
 async function getAll(req, res) {
 	try {
 		const { page: unformatted_page, isOpen = 'true', isClosed = 'true' } = req.query;
-		const page = Number(unformatted_page);
+		const page = Number(unformatted_page);// Validation check
 		if (Number.isNaN(page) || page < 0)
 			return res.status(422).json({
 				success: false,
@@ -88,7 +88,7 @@ async function getAll(req, res) {
 		const list = await commonQuery(GET_ALL_QUERY);
 		const [{ totalResults }] = await commonQuery('SELECT FOUND_ROWS() as totalResults;');
 
-		const totalPages = Math.ceil(totalResults/10);
+		const totalPages = Math.ceil(totalResults/10);// 10 issues per page
 		res.json({
 			data: { list, totalPages, currentPage: page},
 			message: 'Successfully fetched issues',

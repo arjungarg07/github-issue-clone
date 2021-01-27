@@ -48,7 +48,7 @@ export default class IssueTable extends Component {
 	openNewIssueModal = () => {
 		this.setState({
 			isNew: true,
-			active: undefined,
+			selected: undefined,
 			showModal: true,
 		});
 	};
@@ -75,10 +75,10 @@ export default class IssueTable extends Component {
 			[name]: checked,
 		};
 		this.setState({
+			loading: true,
 			filters: {
 				...newFilters,
 			},
-			loading: true,
 		});
 		const {
 			data: { list, totalPages } = {},

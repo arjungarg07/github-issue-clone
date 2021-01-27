@@ -53,6 +53,5 @@ export const getAllIssues = params => new Promise(resolve=>{
 		success: true,
 		data: list,
 		message: 'list fetched'
-
 	})
 });
