@@ -2,6 +2,7 @@
 ![Preview Image](./assets/preview.png)
 
 ## Directory Structure 
+`
 .
 ├── README.md
 ├── assets
@@ -55,3 +56,4 @@
     ├── package.json
     └── routes
         └── index.js
+`
